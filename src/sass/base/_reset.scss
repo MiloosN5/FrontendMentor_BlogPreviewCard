@@ -1,0 +1,15 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+html, body, #root {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+img, svg {
+    display: block;
+}

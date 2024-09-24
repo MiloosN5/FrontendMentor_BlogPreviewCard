@@ -1,0 +1,113 @@
+@use 'sass:map';
+@use '../utilities/variables' as v;
+@use '../utilities/functions' as f;
+@use '../utilities/mixins' as m;
+
+.card {
+    @include m.flexbox($direction: column, $align-items: center);
+
+    &__wrapper {
+        @include m.flexbox(
+            $direction: column, 
+            $gap: f.rem(18)
+        );
+        @include m.dimensions($max-width: f.rem(382));
+        @include m.colors($background: 'white');
+        @include m.paddings(
+            $padding-inline: f.rem(24), 
+            $padding-block: f.rem(24)
+        );
+        @include m.border(
+            $border: f.rem(1) solid map-get(v.$colors, 'gray-950'), 
+            $border-radius: f.rem(20)
+        );
+        @include m.box-shadow(f.rem(9) f.rem(8) f.rem(1) f.rem(1) map-get(v.$colors, 'gray-950'));
+    }
+
+    &__header {
+        @include m.flexbox(
+            $direction: column, 
+            $gap: f.rem(25)
+        );
+    }
+
+    &__graphics {
+        img {
+            @include m.dimensions(
+                $height: f.rem(200), 
+                $width: 100%
+            );
+            @include m.border($border-radius: f.rem(10));
+            object-fit: cover;
+        }
+    }
+
+    &__meta {
+        @include m.flexbox(
+            $direction: column, 
+            $align-items: flex-start, 
+            $gap: f.rem(14)
+        );
+    }
+
+    &__category {
+        @include m.paddings(
+            $padding-block: f.rem(5), 
+            $padding-inline: f.rem(10)
+        );
+        @include m.font(
+            $font-size: f.fluidValue(600, 1200, 12, 14), 
+            $font-weight: 800
+        );
+        @include m.border($border-radius: 'br-label');
+        @include m.colors($background: 'yellow');
+    }
+
+    &__date {
+        @include m.font($font-size: f.fluidValue(600, 1200, 12, 14));
+    }
+
+    &__content {
+        @include m.flexbox(
+            $direction: column, 
+            $gap: f.rem(16)
+        );
+
+        p {
+            @include m.paddings($padding-block: 0 f.rem(8));
+        }
+    }
+
+    &__title {
+        @include m.transition();
+
+        &:hover {
+            cursor: pointer;
+            @include m.colors($foreground: 'yellow');
+        }
+    }
+
+    &__footer {
+        @include m.flexbox($direction: column);
+    }
+
+    &__author {
+        @include m.flexbox(
+            $direction: column, 
+            $mobile-direction: row, 
+            $align-items: center, 
+            $gap: f.rem(13)
+        );
+
+        img {
+            @include m.dimensions($width: f.rem(30));
+        }
+
+        &-name {
+            @include m.font(
+                $font-weight: 800, 
+                $font-size: f.rem(14)
+            );
+        }
+    }
+}

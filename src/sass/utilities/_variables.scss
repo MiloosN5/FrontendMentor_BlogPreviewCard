@@ -1,0 +1,39 @@
+@use 'functions' as f;
+
+$breakpoints: (
+    'mobile': f.em(320),
+    'desktop': f.em(768)
+);
+
+$colors: (
+    'yellow': hsl(47, 88%, 63%),
+    'white': hsl(0, 0%, 100%),    
+    'gray-500': hsl(0, 0%, 42%),
+    'gray-950': hsl(0, 0%, 7%)
+);
+
+$borders: (
+    'br-label': f.rem(4)
+);
+
+$fonts: (
+    'ff-style1': ("Figtree", sans-serif),
+    'fs-root': f.rem(16),
+    'fw-normal': 500,
+    'lh-root': normal,
+    'ls-root': 0
+);
+
+$flex: ();
+
+$width: ();
+
+$height: ();
+
+$paddings: ();
+
+$transitions: (
+    'transition-default': 0.5s ease-in-out
+);
+
+$box-shadows: ();

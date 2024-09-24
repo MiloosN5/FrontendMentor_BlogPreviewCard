@@ -1,0 +1,151 @@
+@use 'sass:map';
+@use './variables' as v;
+@use './functions' as f;
+
+@mixin breakpoint-up($size) {
+    @media (min-width: map-get(v.$breakpoints, $size)) {
+        @content;
+    }
+}
+
+@mixin dimensions(
+    $width: auto, $height: auto, $min-width: auto, $min-height: auto, $max-width: none, $max-height: none,
+    $mobile-width: null, $mobile-height: null, $mobile-min-width: null, $mobile-min-height: null, $mobile-max-width: null, $mobile-max-height: null, 
+    $desktop-width: null, $desktop-height: null, $desktop-min-width: null, $desktop-min-height: null, $desktop-max-width: null, $desktop-max-height: null,
+) {
+    width: map-get(v.$width, $width) or $width;
+    min-width: map-get(v.$width, $min-width) or $min-width;
+    max-width: map-get(v.$width, $max-width) or $max-width;
+    height: map-get(v.$height, $height) or $height;
+    min-height: map-get(v.$width, $min-height) or $min-height;
+    max-height: map-get(v.$width, $max-height) or $max-height;
+    @include breakpoint-up('mobile') {
+        width: map-get(v.$width, $mobile-width) or $mobile-width;
+        min-width: map-get(v.$width, $mobile-min-width) or $mobile-min-width;
+        max-width: map-get(v.$width, $mobile-max-width) or $mobile-max-width;
+        height: map-get(v.$height, $mobile-height) or $mobile-height;
+        min-height: map-get(v.$width, $mobile-min-height) or $mobile-min-height;
+        max-height: map-get(v.$width, $mobile-max-height) or $mobile-max-height;
+    }    
+    @include breakpoint-up('desktop') {
+        width: map-get(v.$width, $desktop-width) or $desktop-width;
+        min-width: map-get(v.$width, $desktop-min-width) or $desktop-min-width;
+        max-width: map-get(v.$width, $desktop-max-width) or $desktop-max-width;
+        height: map-get(v.$height, $desktop-height) or $desktop-height;
+        min-height: map-get(v.$width, $desktop-min-height) or $desktop-min-height;
+        max-height: map-get(v.$width, $desktop-max-height) or $desktop-max-height;
+    }
+}
+
+@mixin paddings(
+    $padding-inline: 0, $padding-block: 0, 
+    $mobile-padding-inline: null, $mobile-padding-block: null, 
+    $desktop-padding-inline: null, $desktop-padding-block: null
+) {
+    padding-inline: map-get(v.$paddings, $padding-inline) or $padding-inline;
+    padding-block: map-get(v.$paddings, $padding-block) or $padding-block;
+    @include breakpoint-up('mobile') {
+        padding-inline: map-get(v.$paddings, $mobile-padding-inline) or $mobile-padding-inline;
+        padding-block: map-get(v.$paddings, $mobile-padding-block) or $mobile-padding-block;
+    }    
+    @include breakpoint-up('desktop') {
+        padding-inline: map-get(v.$paddings, $desktop-padding-inline) or $desktop-padding-inline;
+        padding-block: map-get(v.$paddings, $desktop-padding-block) or $desktop-padding-block;
+    }
+}
+
+@mixin border(
+    $border: none, $border-radius: 0, 
+    $mobile-border: null, $mobile-border-radius: null, 
+    $desktop-border: null, $desktop-border-radius: null
+) {
+    border: map-get(v.$borders, $border) or $border;
+    border-radius: map-get(v.$borders, $border-radius) or $border-radius;
+    @include breakpoint-up('mobile') {
+        border: map-get(v.$borders, $mobile-border) or $mobile-border;
+        border-radius: map-get(v.$borders, $mobile-border-radius) or $mobile-border-radius;
+    }    
+    @include breakpoint-up('desktop') {
+        border: map-get(v.$borders, $desktop-border) or $desktop-border;
+        border-radius: map-get(v.$borders, $desktop-border-radius) or $desktop-border-radius;
+    }
+}
+
+@mixin flexbox(
+    $direction: row, $justify-content: normal, $align-items: normal, $wrap: nowrap, $gap: (normal normal),
+    $mobile-direction: null, $mobile-justify-content: null, $mobile-align-items: null, $mobile-wrap: null, $mobile-gap: null,
+    $desktop-direction: null, $desktop-justify-content: null, $desktop-align-items: null, $desktop-wrap: null, $desktop-gap: null
+) {
+    display: flex;
+    flex-direction: map-get(v.$flex, $direction) or $direction;
+    justify-content: map-get(v.$flex, $justify-content) or $justify-content;
+    align-items: map-get(v.$flex, $align-items) or $align-items;
+    flex-wrap: map-get(v.$flex, $wrap) or $wrap;
+    gap: map-get(v.$flex, $gap) or $gap;
+    @include breakpoint-up('mobile') {
+        flex-direction: map-get(v.$flex, $mobile-direction) or $mobile-direction;
+        justify-content: map-get(v.$flex, $mobile-justify-content) or $mobile-justify-content;
+        align-items: map-get(v.$flex, $mobile-align-items) or $mobile-align-items;
+        flex-wrap: map-get(v.$flex, $mobile-wrap) or $mobile-wrap;
+        gap: map-get(v.$flex, $mobile-gap) or $mobile-gap;
+    }    
+    @include breakpoint-up('desktop') {
+        flex-direction: map-get(v.$flex, $desktop-direction) or $desktop-direction;
+        justify-content: map-get(v.$flex, $desktop-justify-content) or $desktop-justify-content;
+        align-items: map-get(v.$flex, $desktop-align-items) or $desktop-align-items;
+        flex-wrap: map-get(v.$flex, $desktop-wrap) or $desktop-wrap;
+        gap: map-get(v.$flex, $desktop-gap) or $desktop-gap;
+    }  
+}
+
+@mixin font(
+    $font-family: 'ff-style1', $font-size: 'fs-root', $font-weight: 'fw-normal', $letter-spacing: 'ls-root', $line-height: 'lh-root',
+    $mobile-font-family: null, $mobile-font-size: null, $mobile-font-weight: null, $mobile-letter-spacing: null, $mobile-line-height: null,
+    $desktop-font-family: null, $desktop-font-size: null, $desktop-font-weight: null, $desktop-letter-spacing: null, $desktop-line-height: null
+) {
+    font-family: map-get(v.$fonts, $font-family) or $font-family;
+    font-size: map-get(v.$fonts, $font-size) or $font-size;
+    font-weight: map-get(v.$fonts, $font-weight) or $font-weight;
+    letter-spacing: map-get(v.$fonts, $letter-spacing) or $letter-spacing;
+    line-height: map-get(v.$fonts, $line-height) or $line-height;
+    @include breakpoint-up('mobile') {
+        font-family: map-get(v.$fonts, $mobile-font-family) or $mobile-font-family;
+        font-size: map-get(v.$fonts, $mobile-font-size) or $mobile-font-size;
+        font-weight: map-get(v.$fonts, $mobile-font-weight) or $mobile-font-weight;
+        letter-spacing: map-get(v.$fonts, $mobile-letter-spacing) or $mobile-letter-spacing;
+        line-height: map-get(v.$fonts, $mobile-line-height) or $mobile-line-height;
+    }    
+    @include breakpoint-up('desktop') {
+        font-family: map-get(v.$fonts, $desktop-font-family) or $desktop-font-family;
+        font-size: map-get(v.$fonts, $desktop-font-size) or $desktop-font-size;
+        font-weight: map-get(v.$fonts, $desktop-font-weight) or $desktop-font-weight;
+        letter-spacing: map-get(v.$fonts, $desktop-letter-spacing) or $desktop-letter-spacing;
+        line-height: map-get(v.$fonts, $desktop-line-height) or $desktop-line-height;
+    }    
+}
+
+@mixin colors(
+    $foreground: 'gray-950', $background: transparent, 
+    $mobile-foreground: null, $mobile-background: null, 
+    $desktop-foreground: null, $desktop-background: null
+) {
+    color: map-get(v.$colors, $foreground) or $foreground;
+    background-color: map-get(v.$colors, $background) or $background;
+    @include breakpoint-up('mobile') {
+        color: map-get(v.$colors, $mobile-foreground) or $mobile-foreground;
+        background-color: map-get(v.$colors, $mobile-background) or $mobile-background;
+    }    
+    @include breakpoint-up('desktop') {
+        color: map-get(v.$colors, $desktop-foreground) or $desktop-foreground;
+        background-color: map-get(v.$colors, $desktop-background) or $desktop-background;
+    }
+}
+
+@mixin transition($transition: 'transition-default') {
+    transition: map-get(v.$transitions, $transition) or $transition;
+}
+
+@mixin box-shadow($box-shadow: none) {
+    box-shadow: map-get(v.$box-shadows, $box-shadow) or $box-shadow;
+}
+

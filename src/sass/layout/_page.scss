@@ -1,0 +1,25 @@
+@use 'sass:map';
+@use '../utilities/variables' as v;
+@use '../utilities/functions' as f;
+@use '../utilities/mixins' as m;
+
+.page {
+    @include m.flexbox(
+        $direction: column, 
+        $justify-content: center
+    );
+    flex: 1;
+
+    &__wrapper {
+        @include m.paddings(
+            $padding-block: f.rem(25), 
+            $padding-inline: f.rem(25)
+        );
+        @include m.flexbox(
+            $direction: column, 
+            $justify-content: center
+        );
+        @include m.colors($background: 'yellow');
+        flex: 1;
+    }
+}

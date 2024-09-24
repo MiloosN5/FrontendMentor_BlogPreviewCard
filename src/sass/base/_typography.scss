@@ -1,0 +1,31 @@
+@use '../utilities/functions' as f;
+@use '../utilities/mixins' as m;
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap');
+
+html {
+    @include m.font($font-size: f.rem(16));
+}
+
+*,
+*::before,
+*::after {
+    @include m.font($font-weight: 500);
+    @include m.colors($foreground: 'gray-950');
+    font-style: normal;
+    word-break: break-all;
+}
+
+h4 {
+    @include m.font(
+        $font-size: f.fluidValue(600, 1200, 20, 24), 
+        $font-weight: 800
+    );
+}
+
+p {
+    @include m.font(
+        $font-size: f.fluidValue(600, 1200, 14, 16), 
+        $line-height: f.fluidValue(600, 1200, 20, 23)
+    );
+    @include m.colors($foreground: 'gray-500');
+}
