@@ -22,7 +22,7 @@ const Card = ({ item }) => {
                     </div>
                 </header>
                 <div className='card__content'>
-                    <h4 className='card__title'>{item.title}</h4>
+                    <h3 className='card__title'>{item.title}</h3>
                     <p className='card__desc'>{item.desc}</p>
                 </div>
                 <footer className='card__footer'>

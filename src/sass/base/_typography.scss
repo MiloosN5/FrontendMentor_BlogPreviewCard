@@ -15,7 +15,7 @@ html {
     word-break: break-all;
 }
 
-h4 {
+h3 {
     @include m.font(
         $font-size: f.fluidValue(600, 1200, 20, 24), 
         $font-weight: 800

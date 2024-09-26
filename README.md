@@ -147,7 +147,7 @@ One of the challenges is determining whether a case is individual or can be appl
         </div>
       </header>
       <div className='card__content'>
-        <h4 className='card__title'></h4>
+        <h3 className='card__title'></h3>
         <p className='card__desc'></p>
       </div>
       <footer className='card__footer'>
